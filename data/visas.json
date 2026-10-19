@@ -1,0 +1,81 @@
+{
+  "usa": {
+    "countryName": "United States of America",
+    "visaTypes": ["F1 (Student)", "H1B (Work)", "B2 (Tourist)"],
+    "eligibility": [
+      "Valid passport with 6 months validity",
+      "Proof of funds for intended stay",
+      "Return ticket or travel itinerary"
+    ],
+    "documents": [
+      "Passport",
+      "DS-160 confirmation",
+      "Visa fee receipt",
+      "Proof of funds",
+      "Travel itinerary",
+      "Medical examination certificate"
+    ],
+    "financialRequirements": "$25,000 - $45,000 per year (Student), $60,000+ (Work), $5,000+ (Tourist)",
+    "processingTime": "2–6 weeks",
+    "rules": [
+      "20 hrs/week part-time work allowed for students",
+      "Work visa requires employer sponsorship",
+      "Tourist visa valid for 90 days",
+      "Can transition between visa types"
+    ]
+  },
+
+  "newzealand": {
+    "countryName": "New Zealand",
+    "visaTypes": ["Student Visa", "Work Visa", "Tourist Visa"],
+    "eligibility": [
+      "Offer letter from NZ institution (Student)",
+      "Valid job offer from NZ employer (Work)",
+      "Proof of funds for stay (Tourist)"
+    ],
+    "documents": [
+      "Passport",
+      "Offer of place/job offer",
+      "Proof of funds",
+      "Medical certificate",
+      "Police clearance",
+      "Travel insurance"
+    ],
+    "financialRequirements": "NZD 20,000 (Student), NZD 30,000+ (Work), NZD 5,000 (Tourist)",
+    "processingTime": "4–8 weeks (Student), 2–4 weeks (Work), 5–10 days (Tourist)",
+    "rules": [
+      "20 hrs/week part-time work allowed for students",
+      "Post-study work visa available",
+      "Tourist visa valid for 9 months",
+      "Pathway to permanent residency for workers"
+    ]
+  },
+
+  "portugal": {
+    "countryName": "Portugal",
+    "visaTypes": ["D4 Student Visa", "D Work Visa", "Schengen Tourist Visa"],
+    "eligibility": [
+      "University admission (Student)",
+      "Job offer from Portuguese employer (Work)",
+      "Valid passport (Tourist)"
+    ],
+    "documents": [
+      "Passport",
+      "Admission letter/Job offer",
+      "Bank statements",
+      "NIF (tax number)",
+      "Accommodation proof",
+      "Travel insurance"
+    ],
+    "financialRequirements": "€9,000 - €12,000 (Student), €15,000+ (Work), €50 per day (Tourist)",
+    "processingTime": "30–60 days (Student), 15–30 days (Work), 10–15 days (Tourist)",
+    "rules": [
+      "Part-time work allowed for students",
+      "Schengen travel access",
+      "EU employment rights for workers",
+      "Tourist visa valid for 90 days"
+    ]
+  }
+}
+
+

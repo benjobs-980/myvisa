@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Details | MyVisa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo-section">
+      <div class="logo">
+        <span class="logo-text">MyVisa</span>
+      </div>
+      <span class="tagline">Your Visa Application Assistance Partner</span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="Index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="study-destinations.html">Study</a>
+      <a href="work-destinations.html">Work</a>
+      <a href="tourist-destinations.html">Tourist</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <a href="services.html" class="nav-cta">Get Started <span>→</span></a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<section class="country-detail-page">
+  <div class="country-detail-breadcrumb">
+    <a href="Index.html">Home</a>
+    <span> / </span>
+    <a href="explore-destinations.html">Explore destinations</a>
+    <span> / </span>
+    <span id="breadcrumbType">Visa</span>
+  </div>
+
+  <div class="country-detail-hero">
+    <div class="country-hero-copy">
+      <span class="eyebrow" id="visaCategoryBadge">Visa</span>
+      <h1 id="countryName">Loading country...</h1>
+      <p id="countryIntro">Loading visa information...</p>
+
+      <div class="country-actions">
+        <a href="services.html" class="primary-btn">Book consultation</a>
+        <a href="explore-destinations.html" class="secondary-btn">Explore more countries</a>
+      </div>
+    </div>
+
+    <div class="country-hero-panel">
+      <div class="panel-card">
+        <p class="panel-label">Visa category</p>
+        <strong id="panelType">—</strong>
+      </div>
+      <div class="panel-card">
+        <p class="panel-label">Processing time</p>
+        <strong id="panelTime">—</strong>
+      </div>
+      <div class="panel-card">
+        <p class="panel-label">Financial requirement</p>
+        <strong id="panelFunds">—</strong>
+      </div>
+    </div>
+  </div>
+
+  <div id="visaContent"></div>
+</section>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const country = params.get("country");
+const visaType = params.get("type") || "study";
+const safeType = (visaType || "study").toLowerCase();
+const jsonFile = `data/${safeType}-visas.json`;
+
+const formatLabel = (value) => value ? value.charAt(0).toUpperCase() + value.slice(1) : "Visa";
+const pickList = (value, fallback = ["Information available on request."]) => Array.isArray(value) && value.length ? value : fallback;
+
+const countryProfiles = {
+  usa: {
+    title: "A global hub for business, study, and travel",
+    description: "The United States offers world-class education, diverse city life, and unmatched career opportunities across technology, finance, healthcare, and creative industries.",
+    highlights: ["Top-ranked universities", "Strong job market", "Iconic destinations"],
+    gallery: [
+      "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  newzealand: {
+    title: "Adventure, nature, and a welcoming lifestyle",
+    description: "New Zealand is known for its stunning landscapes, high quality of life, and supportive environment for students and skilled workers seeking a balanced future.",
+    highlights: ["Outdoor lifestyle", "Friendly cities", "Strong study pathways"],
+    gallery: [
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  portugal: {
+    title: "A European destination with culture and affordability",
+    description: "Portugal combines historic charm, coastal beauty, and a relaxed pace of life, making it a popular place for study, travel, and career growth.",
+    highlights: ["Historic cities", "Schengen access", "Affordable lifestyle"],
+    gallery: [
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1523907833184-7f4b7f798f20?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  panama: {
+    title: "A strategic hub connecting the Americas",
+    description: "Panama offers growing business opportunities, excellent logistics connectivity, and a vibrant mix of urban life and coastal scenery.",
+    highlights: ["Business gateway", "Canal city life", "Warm climate"],
+    gallery: [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1548412879-16a1c6e58425?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  australia: {
+    title: "A bright future by the coast and the outback",
+    description: "Australia is admired for its strong education system, welcoming communities, and exceptional opportunities for skilled professionals and students.",
+    highlights: ["World-class universities", "Strong migration pathways", "Coastal lifestyle"],
+    gallery: [
+      "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  ireland: {
+    title: "A friendly destination with heritage and opportunity",
+    description: "Ireland offers a welcoming environment, strong international business ties, and charming cities that attract professionals and students alike.",
+    highlights: ["Historic culture", "Business-friendly economy", "Warm communities"],
+    gallery: [
+      "https://images.unsplash.com/photo-1518522014715-63d0c8d7d8d8?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  canada: {
+    title: "A diverse, welcoming destination with global opportunity",
+    description: "Canada is known for its safe cities, strong academic institutions, skilled labor demand, and scenic landscapes that appeal to students, workers, and travelers alike.",
+    highlights: ["Strong education system", "Friendly communities", "Pathways to PR"],
+    gallery: [
+      "https://images.unsplash.com/photo-1508009603885-50cf7c579a4a?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  uk: {
+    title: "A historic destination with strong academic and career opportunities",
+    description: "The United Kingdom combines prestigious universities, vibrant cities, and a global business network, making it a top destination for study, work, and travel.",
+    highlights: ["Prestigious institutions", "Global career hubs", "Rich cultural heritage"],
+    gallery: [
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80"
+    ]
+  },
+  germany: {
+    title: "A practical and innovative destination for study and work",
+    description: "Germany offers excellent engineering, technology, and research pathways, combined with efficient public infrastructure and a high standard of living.",
+    highlights: ["Strong job market", "Research excellence", "European access"],
+    gallery: [
+      "https://images.unsplash.com/photo-1523907833184-7f4b7f798f20?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+    ]
+  }
+};
+
+fetch(jsonFile)
+  .then(async (response) => {
+    if (!response.ok) {
+      throw new Error(`Unable to load ${jsonFile}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    const visa = data[country];
+
+    if (!visa) {
+      document.getElementById("countryName").textContent = "Country details not found";
+      document.getElementById("countryIntro").textContent = "Please select a valid destination from the Explore Destinations page.";
+      document.getElementById("visaContent").innerHTML = `
+        <div class="empty-state">
+          <h3>We could not find the selected country.</h3>
+          <p>Return to the destination list and choose a valid visa option.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const typeLabel = formatLabel(safeType).replace(/\b\w/g, c => c.toUpperCase());
+    const visaNames = pickList(visa.visaTypes, [typeLabel + " Visa"]);
+    const eligibility = pickList(visa.eligibility);
+    const documents = pickList(visa.documents);
+    const rules = pickList(visa.rules);
+
+    document.title = `${visa.countryName} | ${typeLabel} Visa | MyVisa`;
+    document.getElementById("countryName").textContent = visa.countryName;
+    document.getElementById("countryIntro").textContent = `Explore ${visa.countryName} visa requirements, key eligibility factors, required documents, and application guidance for ${typeLabel.toLowerCase()} applicants.`;
+    document.getElementById("visaCategoryBadge").textContent = `${typeLabel} Visa`;
+    document.getElementById("breadcrumbType").textContent = `${typeLabel} Visa`;
+    document.getElementById("panelType").textContent = visaNames.join(", ");
+    document.getElementById("panelTime").textContent = visa.processingTime || "Check with advisor";
+    document.getElementById("panelFunds").textContent = visa.financialRequirements || "Varies by visa";
+
+    const profile = countryProfiles[country] || {
+      title: `${visa.countryName} offers a strong pathway for international applicants`,
+      description: `Explore ${visa.countryName} for a blend of opportunity, lifestyle, and convenience suited to ${typeLabel.toLowerCase()} goals.`,
+      highlights: ["Career opportunities", "Cultural experience", "Strong lifestyle value"],
+      gallery: [
+        "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80",
+        "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80"
+      ]
+    };
+
+    document.getElementById("visaContent").innerHTML = `
+      <div class="country-summary-grid">
+        <div class="summary-card accent">
+          <span class="summary-label">Visa types</span>
+          <strong>${visaNames.join(", ")}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Processing time</span>
+          <strong>${visa.processingTime || "Check with advisor"}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Financial requirement</span>
+          <strong>${visa.financialRequirements || "Varies by visa"}</strong>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Typical stay</span>
+          <strong>${visa.rules?.[3] || "Depends on visa category"}</strong>
+        </div>
+      </div>
+
+      <div class="country-story">
+        <div class="country-story-copy">
+          <p class="story-kicker">Country overview</p>
+          <h3>${profile.title}</h3>
+          <p>${profile.description}</p>
+          <ul class="story-points">
+            ${profile.highlights.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="country-gallery">
+          ${profile.gallery.map(image => `
+            <div class="country-gallery-item">
+              <img src="${image}" alt="${visa.countryName} destination" />
+            </div>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h3>Eligibility</h3>
+          <ul class="detail-list">
+            ${eligibility.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h3>Required documents</h3>
+          <ul class="detail-list">
+            ${documents.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h3>Visa rules & conditions</h3>
+          <ul class="detail-list">
+            ${rules.map(item => `<li>${item}</li>`).join("")}
+          </ul>
+        </article>
+
+        <article class="detail-card">
+          <h3>Application guidance</h3>
+          <p class="detail-note">Start by confirming the correct visa category, preparing your required documents, and checking your financial and eligibility requirements before submitting your application.</p>
+          <p class="detail-note">Our consultants can help you verify the exact paperwork, timeline, and submission process for ${visa.countryName} before you apply.</p>
+        </article>
+      </div>
+
+      <div class="consultation-banner">
+        <p>If you need more help, please book a consultation.</p>
+        <a href="services.html" class="primary-btn">Book a consultation</a>
+      </div>
+    `;
+  })
+  .catch(error => {
+    console.error(error);
+    document.getElementById("countryName").textContent = "Unable to load country details";
+    document.getElementById("countryIntro").textContent = "There was a problem retrieving the visa information.";
+    document.getElementById("visaContent").innerHTML = `
+      <div class="empty-state">
+        <h3>Please try again later.</h3>
+        <p>We could not load the visa information for this destination.</p>
+      </div>
+    `;
+  });
+</script>
+
+<!-- Footer Section -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">MyVisa.atekus.com</div>
+      <p>Your trusted visa partner for study, work, and tourist visa success across the globe.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="Index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Track Consultation Status</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Visa Services</h4>
+      <a href="study-destinations.html">Study Visa</a>
+      <a href="work-destinations.html">Work Visa</a>
+      <a href="tourist-destinations.html">Tourist Visa</a>
+      <a href="services.html">Consultation</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Email: support@myvisa.com</p>
+      <p>Phone: +91 8297643830</p>
+      <p>Office Hours: Mon - Sat, 9:00 AM - 7:00 PM</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MyVisa. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

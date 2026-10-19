@@ -1,0 +1,159 @@
+{
+  "usa": {
+    "countryName": "United States of America",
+    "visaTypes": ["B2 Tourist Visa", "ESTA (Visa Waiver)"],
+    "eligibility": [
+      "Valid passport with 6 months validity",
+      "Proof of funds",
+      "Return ticket or travel itinerary"
+    ],
+    "documents": [
+      "Passport",
+      "DS-160 form",
+      "Passport-sized photos",
+      "Travel itinerary",
+      "Proof of accommodation",
+      "Bank statements",
+      "Travel insurance"
+    ],
+    "financialRequirements": "$5,000 - $10,000 per trip",
+    "processingTime": "5–10 days",
+    "rules": [
+      "Valid for 10 years",
+      "Multiple entries allowed",
+      "Stay up to 180 days per visit",
+      "Visa interview may be required"
+    ]
+  },
+
+  "newzealand": {
+    "countryName": "New Zealand",
+    "visaTypes": ["Tourist Visa", "Visitor Visa"],
+    "eligibility": [
+      "Valid passport (minimum 3 months validity)",
+      "Proof of funds",
+      "Return ticket"
+    ],
+    "documents": [
+      "Passport",
+      "Completed visa application",
+      "Passport-sized photos",
+      "Travel itinerary",
+      "Hotel/accommodation bookings",
+      "Bank statements",
+      "Travel insurance",
+      "Proof of employment/study"
+    ],
+    "financialRequirements": "NZD 5,000 - 10,000",
+    "processingTime": "5–10 days",
+    "rules": [
+      "Valid for 9 months",
+      "Can stay up to 6 months per visit",
+      "Multiple entries allowed",
+      "No work permitted"
+    ]
+  },
+
+  "portugal": {
+    "countryName": "Portugal",
+    "visaTypes": ["Schengen Tourist Visa", "Short Stay Visa"],
+    "eligibility": [
+      "Valid passport",
+      "Travel itinerary",
+      "Proof of accommodation"
+    ],
+    "documents": [
+      "Passport",
+      "Completed visa application",
+      "Passport photos (2 copies)",
+      "Travel itinerary",
+      "Hotel booking confirmation",
+      "Bank statements",
+      "Travel insurance",
+      "Proof of residence"
+    ],
+    "financialRequirements": "€50 per day (minimum €1,500)",
+    "processingTime": "10–15 days",
+    "rules": [
+      "Valid for 1 year",
+      "Can stay up to 90 days within 180 days",
+      "Multiple entries allowed",
+      "Schengen area travel access"
+    ]
+  },
+
+  "canada": {
+    "countryName": "Canada",
+    "visaTypes": ["Visitor Visa", "eTA (Visa Waiver)", "Super Visa"],
+    "eligibility": [
+      "Valid passport and travel purpose",
+      "Proof of enough funds for the trip",
+      "Return or onward travel plan"
+    ],
+    "documents": [
+      "Passport",
+      "Travel itinerary",
+      "Hotel bookings",
+      "Bank statements",
+      "Invitation letter (if visiting family)",
+      "Travel insurance"
+    ],
+    "financialRequirements": "CAD 2,000–CAD 10,000 depending on trip",
+    "processingTime": "2–4 weeks",
+    "rules": [
+      "Visitor visa may allow stays of up to 6 months",
+      "Multiple entries are common",
+      "Work is not allowed on a standard visitor visa"
+    ]
+  },
+
+  "uk": {
+    "countryName": "United Kingdom",
+    "visaTypes": ["Standard Visitor Visa", "Family Visitor Visa", "Business Visitor Visa"],
+    "eligibility": [
+      "Clear tourism or business purpose",
+      "Sufficient funds for trip and return",
+      "Intention to leave at the end of stay"
+    ],
+    "documents": [
+      "Passport",
+      "Travel itinerary",
+      "Hotel bookings",
+      "Bank statements",
+      "Employment letter",
+      "Invitation letter if applicable"
+    ],
+    "financialRequirements": "£1,000–£2,500+ depending on duration",
+    "processingTime": "3–6 weeks",
+    "rules": [
+      "Tourist stay usually up to 6 months",
+      "Some trips can be multiple entry",
+      "No work or long-term study allowed"
+    ]
+  },
+
+  "germany": {
+    "countryName": "Germany",
+    "visaTypes": ["Schengen Tourist Visa", "Short Stay Visa"],
+    "eligibility": [
+      "Valid passport and travel purpose",
+      "Proof of accommodation and funds",
+      "Return ticket or onward destination"
+    ],
+    "documents": [
+      "Passport",
+      "Flight itinerary",
+      "Hotel reservation",
+      "Bank statements",
+      "Travel insurance",
+      "Proof of employment or study"
+    ],
+    "financialRequirements": "€50 per day, minimum €1,500",
+    "processingTime": "10–15 days",
+    "rules": [
+      "Can stay up to 90 days within 180 days",
+      "Schengen travel access across Europe",
+      "Multiple-entry tours are possible"
+    ]
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "usa": {
+    "countryName": "United States of America",
+    "visaTypes": ["H1B", "L1", "O1"],
+    "eligibility": [
+      "Valid job offer from US employer",
+      "Specialty occupation requirement",
+      "Bachelor's degree or equivalent"
+    ],
+    "documents": [
+      "Passport",
+      "Job offer letter",
+      "Form I-129 (petition)",
+      "Educational credentials",
+      "Work experience letters",
+      "Police clearance"
+    ],
+    "financialRequirements": "$60,000+ per year",
+    "processingTime": "4–8 weeks",
+    "rules": [
+      "Employer sponsorship required",
+      "Lottery-based selection system",
+      "Can bring spouse and dependents",
+      "Potential pathway to green card"
+    ]
+  },
+
+  "newzealand": {
+    "countryName": "New Zealand",
+    "visaTypes": ["Essential Skills Work Visa", "Long Term Skill Shortage"],
+    "eligibility": [
+      "Valid job offer from NZ employer",
+      "Qualification relevant to job",
+      "Meet health & character requirements"
+    ],
+    "documents": [
+      "Passport",
+      "Job offer letter",
+      "Qualifications & certifications",
+      "Work experience letters",
+      "Proof of funds",
+      "Medical examination",
+      "Police clearance"
+    ],
+    "financialRequirements": "NZD 30,000+ per year",
+    "processingTime": "2–4 weeks",
+    "rules": [
+      "Employer sponsorship required",
+      "Post-work visa options available",
+      "Can bring family members",
+      "Pathway to permanent residency"
+    ]
+  },
+
+  "portugal": {
+    "countryName": "Portugal",
+    "visaTypes": ["D Work Visa", "Temporary Residence"],
+    "eligibility": [
+      "Job offer from Portuguese employer",
+      "Professional qualifications",
+      "Health and character clearance"
+    ],
+    "documents": [
+      "Passport",
+      "Job offer letter",
+      "Educational qualifications",
+      "Work experience certificate",
+      "Bank statements",
+      "NIF (tax number)",
+      "Accommodation proof",
+      "Police clearance"
+    ],
+    "financialRequirements": "€15,000+ per year",
+    "processingTime": "15–30 days",
+    "rules": [
+      "EU employment rights",
+      "Schengen area access",
+      "Renewable annually",
+      "Family reunification possible"
+    ]
+  },
+
+  "panama": {
+    "countryName": "Panama",
+    "visaTypes": ["Work Permit", "Temporary Work Visa", "Professional Work Visa"],
+    "eligibility": [
+      "Valid job offer from Panamanian employer",
+      "Professional skills and qualifications",
+      "No criminal record"
+    ],
+    "documents": [
+      "Passport (valid for 6+ months)",
+      "Job offer letter from employer",
+      "Educational certificates and qualifications",
+      "Work experience letters",
+      "Police clearance certificate",
+      "Medical examination",
+      "Bank statements",
+      "Proof of accommodation"
+    ],
+    "financialRequirements": "$800–$1,500 per month",
+    "processingTime": "2–4 weeks",
+    "rules": [
+      "Employer sponsorship required",
+      "Valid for 1–2 years (renewable)",
+      "Family members can apply for dependent visas",
+      "Work permit issued by Ministry of Labor"
+    ]
+  },
+
+  "australia": {
+    "countryName": "Australia",
+    "visaTypes": ["Skilled Independent Visa (189)", "Employer Sponsored Visa (482)", "Skilled Nominated Visa (190)"],
+    "eligibility": [
+      "Be on skilled occupation list (SOL)",
+      "Pass points test (65+ points)",
+      "Have work experience in skilled occupation",
+      "English language proficiency"
+    ],
+    "documents": [
+      "Passport",
+      "Skills assessment certificate",
+      "English language test results (IELTS/TOEFL)",
+      "Educational transcripts and certifications",
+      "Work experience letters",
+      "Police clearance certificate",
+      "Medical examination",
+      "Proof of financial capacity"
+    ],
+    "financialRequirements": "AUD 45,000+ per year",
+    "processingTime": "8–12 weeks",
+    "rules": [
+      "Points-based skilled migration system",
+      "Health and character requirements mandatory",
+      "Can bring spouse and dependent children",
+      "Potential pathway to permanent residency"
+    ]
+  },
+
+  "ireland": {
+    "countryName": "Ireland",
+    "visaTypes": ["Critical Skills Employment Permit", "General Employment Permit", "Intra-Company Transfer Permit"],
+    "eligibility": [
+      "Valid job offer from Irish employer",
+      "Meet salary thresholds (€32,000+ for listed occupations)",
+      "Relevant qualifications and experience",
+      "Irish employer must hire preference to EEA citizens first"
+    ],
+    "documents": [
+      "Passport",
+      "Detailed job offer letter",
+      "Educational qualifications",
+      "Work experience certificates",
+      "Proof of English language proficiency",
+      "Bank statements and proof of funds",
+      "Police clearance certificate",
+      "Medical examination report"
+    ],
+    "financialRequirements": "€32,000–€64,000+ per year (depending on occupation)",
+    "processingTime": "2–4 weeks",
+    "rules": [
+      "Employer must prove no suitable Irish/EEA candidates",
+      "Valid for 2 years, renewable",
+      "Can bring spouse and dependent children",
+      "Pathway to permanent residence after 5 years"
+    ]
+  },
+
+  "canada": {
+    "countryName": "Canada",
+    "visaTypes": ["Temporary Work Permit", "LMIA-based Work Permit", "Express Entry-linked Work Path"],
+    "eligibility": [
+      "Valid job offer from a Canadian employer",
+      "Relevant qualification and work experience",
+      "Ability to meet labour market conditions and language requirements"
+    ],
+    "documents": [
+      "Passport",
+      "Job offer letter",
+      "Proof of education and work experience",
+      "Language test results",
+      "Police clearance",
+      "Medical exam if requested"
+    ],
+    "financialRequirements": "CAD 25,000+ per year",
+    "processingTime": "2–8 weeks",
+    "rules": [
+      "Employer may need LMIA approval",
+      "Skilled workers may transition to PR pathways",
+      "Spouse and dependents can often apply with you"
+    ]
+  },
+
+  "uk": {
+    "countryName": "United Kingdom",
+    "visaTypes": ["Skilled Worker Visa", "Global Talent Visa", "Health and Care Worker Visa"],
+    "eligibility": [
+      "Job offer from approved UK employer",
+      "Minimum salary threshold for the role",
+      "English language proficiency"
+    ],
+    "documents": [
+      "Passport",
+      "Certificate of sponsorship",
+      "Proof of qualifications",
+      "Employment letters",
+      "English language test results",
+      "Financial evidence"
+    ],
+    "financialRequirements": "£1,270+ maintenance funds or employer support",
+    "processingTime": "3–8 weeks",
+    "rules": [
+      "Employer sponsorship is often required",
+      "Visa can lead to settlement after qualifying period",
+      "Dependents can usually join the main applicant"
+    ]
+  },
+
+  "germany": {
+    "countryName": "Germany",
+    "visaTypes": ["EU Blue Card", "Skilled Worker Visa", "Temporary Work Visa"],
+    "eligibility": [
+      "Job offer from German employer",
+      "Relevant qualifications and professional recognition",
+      "Proof of sufficient German or English language ability"
+    ],
+    "documents": [
+      "Passport",
+      "Employment contract",
+      "Degree recognition documents",
+      "Professional certificates",
+      "Police clearance",
+      "Health insurance proof"
+    ],
+    "financialRequirements": "€2,300–€4,000+ monthly salary depending on role",
+    "processingTime": "2–8 weeks",
+    "rules": [
+      "Blue Card can fast-track long-term residence",
+      "Work visa can lead to settlement after qualifying years",
+      "Family reunification is available"
+    ]
+  }
+}

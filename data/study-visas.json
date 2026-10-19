@@ -1,0 +1,151 @@
+{
+  "usa": {
+    "countryName": "United States of America",
+    "visaTypes": ["F1", "J1", "M1"],
+    "eligibility": [
+      "Admission from SEVP-approved university",
+      "English proficiency (IELTS/TOEFL)",
+      "Intent to return after studies"
+    ],
+    "documents": [
+      "Passport",
+      "I-20",
+      "DS-160 confirmation",
+      "Visa fee receipt",
+      "Academic transcripts",
+      "Financial proof"
+    ],
+    "financialRequirements": "Minimum $25,000 - $45,000 per year",
+    "processingTime": "2–6 weeks",
+    "rules": [
+      "20 hrs/week part-time work allowed",
+      "OPT available after graduation",
+      "Can bring dependents"
+    ]
+  },
+
+  "newzealand": {
+    "countryName": "New Zealand",
+    "visaTypes": ["Student Visa"],
+    "eligibility": [
+      "Offer letter from NZ institution",
+      "Medical & police clearance",
+      "English proficiency"
+    ],
+    "documents": [
+      "Passport",
+      "Offer of place",
+      "Proof of funds",
+      "Medical certificate",
+      "Police clearance",
+      "Travel insurance"
+    ],
+    "financialRequirements": "NZD 20,000 per year",
+    "processingTime": "4–8 weeks",
+    "rules": [
+      "20 hrs/week part-time work allowed",
+      "Post-study work visa available",
+      "Full-time work during holidays"
+    ]
+  },
+
+  "portugal": {
+    "countryName": "Portugal",
+    "visaTypes": ["D4 Student Visa"],
+    "eligibility": [
+      "University admission",
+      "Proof of accommodation",
+      "Proof of financial means"
+    ],
+    "documents": [
+      "Passport",
+      "Admission letter",
+      "Bank statements",
+      "NIF (tax number)",
+      "Accommodation proof",
+      "Travel insurance"
+    ],
+    "financialRequirements": "€9,000 – €12,000 per year",
+    "processingTime": "30–60 days",
+    "rules": [
+      "Part-time work allowed",
+      "Schengen travel access",
+      "Access to EU education rates"
+    ]
+  },
+
+  "canada": {
+    "countryName": "Canada",
+    "visaTypes": ["Study Permit", "Student Direct Stream"],
+    "eligibility": [
+      "Acceptance from a Designated Learning Institution",
+      "Proof of sufficient funds for tuition and living costs",
+      "Clean immigration and criminal record"
+    ],
+    "documents": [
+      "Passport",
+      "Offer letter from Canadian institution",
+      "Proof of funds",
+      "Academic transcripts",
+      "Language test result (IELTS/TOEFL/CELPIP)",
+      "Medical exam if required"
+    ],
+    "financialRequirements": "CAD 20,000+ per year",
+    "processingTime": "4–8 weeks",
+    "rules": [
+      "Students may work up to 20 hours/week during classes",
+      "Post-graduation work permit available",
+      "Dependents may be permitted under certain conditions"
+    ]
+  },
+
+  "uk": {
+    "countryName": "United Kingdom",
+    "visaTypes": ["Student Visa", "Graduate Route"],
+    "eligibility": [
+      "Confirmation of Acceptance for Studies (CAS)",
+      "Proof of English language ability",
+      "Sufficient funds to cover tuition and living costs"
+    ],
+    "documents": [
+      "Passport",
+      "CAS letter",
+      "Academic certificates",
+      "Proof of funds",
+      "Tuberculosis test result (if required)",
+      "English language test result"
+    ],
+    "financialRequirements": "£12,000+ per year",
+    "processingTime": "3–6 weeks",
+    "rules": [
+      "Students may work up to 20 hours/week during term time",
+      "Graduate Route permits post-study work",
+      "Dependents can apply in certain circumstances"
+    ]
+  },
+
+  "germany": {
+    "countryName": "Germany",
+    "visaTypes": ["Student Visa", "National Visa"],
+    "eligibility": [
+      "University admission letter",
+      "Proof of financial means",
+      "Health insurance coverage"
+    ],
+    "documents": [
+      "Passport",
+      "Admission letter",
+      "Proof of funds",
+      "Academic transcripts",
+      "Language proficiency certificate",
+      "Health insurance proof"
+    ],
+    "financialRequirements": "€11,208 annual block account",
+    "processingTime": "4–8 weeks",
+    "rules": [
+      "Students can work part-time during studies",
+      "8-month job-seeking visa available after graduation",
+      "Residence permit can be extended for work"
+    ]
+  }
+}

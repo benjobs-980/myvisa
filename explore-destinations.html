@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Destinations | MyVisa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .explore-hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0px 28px 18px;
+    }
+
+    .explore-hero-inner {
+      background: linear-gradient(135deg, #f5f0ff 0%, #eef5ff 100%);
+      border-radius: 32px;
+      padding: 52px 42px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 24px 60px rgba(94, 75, 160, 0.08);
+    }
+
+    .explore-hero-copy h1 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      margin-bottom: 18px;
+      color: #171a2a;
+    }
+
+    .explore-hero-copy p {
+      color: #111111;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
+    .explore-hero-copy .eyebrow {
+      color: #ffffff;
+    }
+
+    .explore-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .explore-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .explore-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .explore-btn.primary {
+      background: linear-gradient(135deg, #7a4ad6, #5d39b8);
+      color: white;
+      box-shadow: 0 16px 30px rgba(102, 76, 182, 0.24);
+    }
+
+    .explore-btn.secondary {
+      color: #3b2d63;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(111, 92, 211, 0.18);
+    }
+
+    .explore-hero-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(92, 93, 199, 0.08);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 18px 30px rgba(98, 82, 141, 0.08);
+    }
+
+    .explore-hero-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .mini-stat {
+      background: #f7f5ff;
+      border-radius: 16px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.2rem;
+      color: #3b2d63;
+      margin-bottom: 6px;
+    }
+
+    .mini-stat span {
+      color: #4f5563;
+      font-size: 0.76rem;
+    }
+
+    .explore-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 42px 28px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.06em;
+      color: #171a2a;
+    }
+
+    .section-heading p {
+      color: #5d6470;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 18px 32px rgba(17, 24, 39, 0.06);
+      border: 1px solid rgba(128, 115, 181, 0.12);
+    }
+
+    .category-card .pill {
+      display: inline-block;
+      background: rgba(122, 74, 214, 0.1);
+      color: #5d39b8;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .category-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: #171a2a;
+    }
+
+    .category-card p {
+      color: #4f5563;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .category-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+      color: #393d46;
+    }
+
+    .category-card li::before {
+      content: "✓";
+      color: #5f42b3;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .category-card a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #4f36a0;
+      font-weight: 700;
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .destination-card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(128, 115, 181, 0.1);
+    }
+
+    .destination-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .destination-card-body {
+      padding: 20px 18px 22px;
+    }
+
+    .destination-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .destination-meta span {
+      background: #f3eeff;
+      color: #4e2d8f;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 8px 10px;
+    }
+
+    .destination-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #171a2a;
+    }
+
+    .destination-card p {
+      color: #4f5563;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .destination-card a {
+      font-weight: 700;
+      color: #4a2d82;
+      text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+      .explore-hero-inner,
+      .category-grid,
+      .destination-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .explore-hero-inner {
+        padding: 28px 20px;
+      }
+
+      .explore-hero-copy h1 {
+        font-size: 2.7rem;
+      }
+
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo-section">
+      <div class="logo">
+        <span class="logo-text">MyVisa</span>
+      </div>
+      <span class="tagline">Your Visa Application Assistance Partner</span>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="Index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="study-destinations.html">Study</a>
+      <a href="work-destinations.html">Work</a>
+      <a href="tourist-destinations.html">Tourist</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <a href="services.html" class="nav-cta">Get Started <span>→</span></a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<section class="explore-hero">
+  <div class="explore-hero-inner">
+    <div class="explore-hero-copy">
+      <p class="eyebrow">Explore destinations</p>
+      <h1>Find your next global move.</h1>
+      <p>Whether you're planning to study, work, or travel, MyVisa helps you compare destinations, understand visa needs, and take the next step with confidence.</p>
+
+      <div class="explore-actions">
+        <a class="explore-btn primary" href="services.html">Book a consultation</a>
+        <a class="explore-btn secondary" href="study-destinations.html">View study destinations</a>
+      </div>
+    </div>
+
+    <div class="explore-hero-card">
+      <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80" alt="Global visa destinations" />
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <strong>50+</strong>
+          <span>Countries</span>
+        </div>
+        <div class="mini-stat">
+          <strong>98%</strong>
+          <span>Success rate</span>
+        </div>
+        <div class="mini-stat">
+          <strong>24/7</strong>
+          <span>Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="explore-section">
+  <div class="section-heading">
+    <h2>Choose your visa path</h2>
+    <p>Explore destinations tailored to your study, work, and travel goals.</p>
+  </div>
+
+  <div class="category-grid">
+    <article class="category-card">
+      <span class="pill">Study</span>
+      <h3>Study abroad</h3>
+      <p>Build your academic future with expert guidance for top universities and student visa processing.</p>
+      <ul>
+        <li>University selection</li>
+        <li>SOP & documentation</li>
+        <li>Student visa filing</li>
+      </ul>
+      <a href="study-destinations.html">Explore study destinations →</a>
+    </article>
+
+    <article class="category-card">
+      <span class="pill">Work</span>
+      <h3>Work abroad</h3>
+      <p>Move to global career hotspots with the right job-ready visa pathway and employer support.</p>
+      <ul>
+        <li>Country eligibility checks</li>
+        <li>Career-focused guidance</li>
+        <li>Work permit assistance</li>
+      </ul>
+      <a href="work-destinations.html">Explore work destinations →</a>
+    </article>
+
+    <article class="category-card">
+      <span class="pill">Travel</span>
+      <h3>Tourist & family visits</h3>
+      <p>Plan smooth travel with expert support for short-stay visas, family visits, and leisure trips.</p>
+      <ul>
+        <li>Travel documentation review</li>
+        <li>Itinerary support</li>
+        <li>Tourist visa guidance</li>
+      </ul>
+      <a href="tourist-destinations.html">Explore tourist destinations →</a>
+    </article>
+  </div>
+</section>
+
+<section class="explore-section">
+  <div class="section-heading">
+    <h2>Featured destinations</h2>
+    <p>Popular global options for students, professionals, and travelers.</p>
+  </div>
+
+  <div class="destination-grid">
+    <article class="destination-card">
+      <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=900&q=80" alt="Canada destination" />
+      <div class="destination-card-body">
+        <div class="destination-meta">
+          <span>Study</span>
+          <span>Canada</span>
+        </div>
+        <h3>Canada</h3>
+        <p>World-class education, welcoming cities, and excellent post-study opportunities.</p>
+        <a href="study-destinations.html">Learn more</a>
+      </div>
+    </article>
+
+    <article class="destination-card">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" alt="Australia destination" />
+      <div class="destination-card-body">
+        <div class="destination-meta">
+          <span>Study</span>
+          <span>Australia</span>
+        </div>
+        <h3>Australia</h3>
+        <p>High-quality programs, vibrant student life, and strong global career pathways.</p>
+        <a href="study-destinations.html">Learn more</a>
+      </div>
+    </article>
+
+    <article class="destination-card">
+      <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80" alt="United States destination" />
+      <div class="destination-card-body">
+        <div class="destination-meta">
+          <span>Work</span>
+          <span>USA</span>
+        </div>
+        <h3>United States</h3>
+        <p>Innovation-led opportunities and a diverse professional landscape for global talent.</p>
+        <a href="work-destinations.html">Learn more</a>
+      </div>
+    </article>
+
+    <article class="destination-card">
+      <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80" alt="Portugal destination" />
+      <div class="destination-card-body">
+        <div class="destination-meta">
+          <span>Travel</span>
+          <span>Portugal</span>
+        </div>
+        <h3>Portugal</h3>
+        <p>Historic charm, scenic coastlines, and easy-going European travel experiences.</p>
+        <a href="tourist-destinations.html">Learn more</a>
+      </div>
+    </article>
+
+    <article class="destination-card">
+      <img src="images/Germany.jpg" alt="Germany destination" />
+      <div class="destination-card-body">
+        <div class="destination-meta">
+          <span>Work</span>
+          <span>Germany</span>
+        </div>
+        <h3>Germany</h3>
+        <p>Strong industries, skilled workforce opportunities, and streamlined migration pathways.</p>
+        <a href="work-destinations.html">Learn more</a>
+      </div>
+    </article>
+
+    <article class="destination-card">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="Japan destination" />
+      <div class="destination-card-body">
+        <div class="destination-meta">
+          <span>Travel</span>
+          <span>Japan</span>
+        </div>
+        <h3>Japan</h3>
+        <p>Culture, technology, and unforgettable experiences for short-term visitors and travelers.</p>
+        <a href="tourist-destinations.html">Learn more</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">MyVisa</div>
+      <p>Your trusted visa partner for study, work, and tourist visa success across the globe.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="Index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="study-destinations.html">Study</a>
+      <a href="work-destinations.html">Work</a>
+      <a href="tourist-destinations.html">Tourist</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Visa Services</h4>
+      <a href="study-destinations.html">Study Visa</a>
+      <a href="work-destinations.html">Work Visa</a>
+      <a href="tourist-destinations.html">Tourist Visa</a>
+      <a href="services.html">Consultation</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>Email: support@myvisa.com</p>
+      <p>Phone: +91 8297643830</p>
+      <p>Office Hours: Mon - Sat, 9:00 AM - 7:00 PM</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 MyVisa. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
