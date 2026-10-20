@@ -60,15 +60,15 @@
 
     <div class="country-hero-panel">
       <div class="panel-card">
-        <p class="panel-label">Visa category</p>
+        <p class="panel-label">Visa Types</p>
         <strong id="panelType">—</strong>
       </div>
       <div class="panel-card">
-        <p class="panel-label">Processing time</p>
+        <p class="panel-label">Application Timeline</p>
         <strong id="panelTime">—</strong>
       </div>
       <div class="panel-card">
-        <p class="panel-label">Financial requirement</p>
+        <p class="panel-label">Estimated Annual Cost</p>
         <strong id="panelFunds">—</strong>
       </div>
     </div>
@@ -203,7 +203,12 @@ fetch(jsonFile)
     }
 
     const typeLabel = formatLabel(safeType).replace(/\b\w/g, c => c.toUpperCase());
-    const visaNames = pickList(visa.visaTypes, [typeLabel + " Visa"]);
+    const visaNames = pickList(visa.visaTypes, [typeLabel + " Visa"]).map(name =>
+      name
+        .replace(/\bF1\b/gi, "F-1")
+        .replace(/\bJ1\b/gi, "J-1")
+        .replace(/\bM1\b/gi, "M-1")
+    );
     const eligibility = pickList(visa.eligibility);
     const documents = pickList(visa.documents);
     const rules = pickList(visa.rules);
@@ -213,9 +218,32 @@ fetch(jsonFile)
     document.getElementById("countryIntro").textContent = `Explore ${visa.countryName} visa requirements, key eligibility factors, required documents, and application guidance for ${typeLabel.toLowerCase()} applicants.`;
     document.getElementById("visaCategoryBadge").textContent = `${typeLabel} Visa`;
     document.getElementById("breadcrumbType").textContent = `${typeLabel} Visa`;
-    document.getElementById("panelType").textContent = visaNames.join(", ");
-    document.getElementById("panelTime").textContent = visa.processingTime || "Check with advisor";
-    document.getElementById("panelFunds").textContent = visa.financialRequirements || "Varies by visa";
+
+    const workLivingCostMap = {
+      usa: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      newzealand: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      portugal: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      panama: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      australia: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      ireland: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      canada: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      uk: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location",
+      germany: "Estimated travel expenses for accommodation, food, transportation, and activities; varies by trip length and location"
+    };
+
+    if (safeType === "study") {
+      document.getElementById("panelType").textContent = visaNames.join(", ");
+      document.getElementById("panelTime").textContent = "Varies by visa type and appointment availability";
+      document.getElementById("panelFunds").textContent = "Varies by tuition, living expenses, and location";
+    } else if (safeType === "tourist") {
+      document.getElementById("panelType").textContent = visaNames.join(", ");
+      document.getElementById("panelTime").textContent = "Varies by visa type, appointment availability, and processing requirements";
+      document.getElementById("panelFunds").textContent = workLivingCostMap[country] || "Varies by annual living costs in the destination";
+    } else {
+      document.getElementById("panelType").textContent = visaNames.join(", ");
+      document.getElementById("panelTime").textContent = visa.processingTime || "Check with advisor";
+      document.getElementById("panelFunds").textContent = workLivingCostMap[country] || "Varies by annual living costs in the destination";
+    }
 
     const profile = countryProfiles[country] || {
       title: `${visa.countryName} offers a strong pathway for international applicants`,
@@ -228,24 +256,76 @@ fetch(jsonFile)
       ]
     };
 
+    const studyVisaTypeLabel = {
+      usa: "F-1 Academic · J-1 Exchange · M-1 Vocational",
+      newzealand: "Full-time Degree / Diploma Student Visa",
+      portugal: "D4 Student Visa · Short-term Study Visa",
+      canada: "Study Permit · SDS Student Route",
+      uk: "Student Visa (General) · Graduate Route · Dependents Visa",
+      germany: "Student Visa · Student Applicant Visa · Language Course Visa"
+    };
+
+    const workVisaTypeLabel = {
+      usa: "Skilled Worker · Temporary Worker · Intra-Company Transfer · Specialty Occupation",
+      newzealand: "Skilled Worker · Temporary Worker · Seasonal Work · Essential Skills",
+      portugal: "Skilled Worker · Temporary Worker · Seasonal Work · Intra-Company Transfer",
+      panama: "Skilled Worker · Temporary Worker · Professional Work Permit · Seasonal Work",
+      australia: "Skilled Worker · Temporary Worker · Seasonal Work · Employer Sponsored",
+      ireland: "Skilled Worker · General Employment · Intra-Company Transfer · Seasonal Work",
+      canada: "Skilled Worker · Temporary Worker · Seasonal Work · Intra-Company Transfer",
+      uk: "Skilled Worker · Temporary Worker · Seasonal Worker · Intra-Company Transfer",
+      germany: "Skilled Worker · Temporary Worker · Seasonal Work · Intra-Company Transfer"
+    };
+
+    const touristStayDurationMap = {
+      usa: "ESTA: up to 90 days per visit; B-2 Visitor Visa: up to 180 days per visit",
+      newzealand: "Visitor Visa: up to 6 months per visit; Tourist Visa: up to 6 months per visit",
+      portugal: "Schengen Tourist Visa: up to 90 days within any 180-day period; Short Stay Visa: up to 90 days within any 180-day period",
+      canada: "Visitor Visa: up to 6 months per visit; eTA: visa-free short stays; Super Visa: longer family visits depending on eligibility",
+      uk: "Standard Visitor Visa: up to 6 months per visit; Family Visitor Visa: up to 6 months; Business Visitor Visa: up to 6 months",
+      germany: "Schengen Tourist Visa: up to 90 days within any 180-day period; Short Stay Visa: up to 90 days within any 180-day period"
+    };
+
+    const touristTravelConditionMap = {
+      usa: "Multiple entries allowed; valid passport and return/onward ticket required",
+      newzealand: "No work permitted; onward travel and sufficient funds may be required",
+      portugal: "Must remain within Schengen stay limits; return/onward travel should be planned",
+      canada: "Visitor status only; work is not allowed; valid travel documents must be maintained",
+      uk: "No work or long-term study; must leave before the authorized stay ends",
+      germany: "Stay must remain within Schengen limits; onward travel and funds may be requested"
+    };
+
+    const summaryCards = {
+      study: [
+        { label: "Student Visa Types", value: studyVisaTypeLabel[country] || visaNames.join(", ") },
+        { label: "Study Duration", value: "Depends on your course and institution" },
+        { label: "Proof of Funds", value: "Based on tuition, living costs, and visa requirements" },
+        { label: "Work Authorization", value: "Eligible students may qualify for on-campus work or practical training" }
+      ],
+      work: [
+        { label: "Work streams", value: workVisaTypeLabel[country] || visaNames.join(", ") },
+        { label: "Employer requirement", value: visa.rules?.[0] || "Employer sponsorship typically required" },
+        { label: "Salary threshold", value: visa.financialRequirements || "Varies by visa" },
+        { label: "PR pathway", value: visa.rules?.[3] || "Pathway depends on the visa stream" }
+      ],
+      tourist: [
+        { label: "Trip purpose", value: "Tourism, holidays, visiting family or friends, and other permitted visitor activities" },
+        { label: "Stay duration", value: touristStayDurationMap[country] || "Visit duration varies by country" },
+        { label: "Financial proof", value: "Evidence of funds to cover travel expenses, if requested" },
+        { label: "Travel condition", value: touristTravelConditionMap[country] || (visa.rules?.[0] || "Entry conditions apply") }
+      ]
+    };
+
+    const cards = summaryCards[safeType] || summaryCards.study;
+
     document.getElementById("visaContent").innerHTML = `
       <div class="country-summary-grid">
-        <div class="summary-card accent">
-          <span class="summary-label">Visa types</span>
-          <strong>${visaNames.join(", ")}</strong>
-        </div>
-        <div class="summary-card">
-          <span class="summary-label">Processing time</span>
-          <strong>${visa.processingTime || "Check with advisor"}</strong>
-        </div>
-        <div class="summary-card">
-          <span class="summary-label">Financial requirement</span>
-          <strong>${visa.financialRequirements || "Varies by visa"}</strong>
-        </div>
-        <div class="summary-card">
-          <span class="summary-label">Typical stay</span>
-          <strong>${visa.rules?.[3] || "Depends on visa category"}</strong>
-        </div>
+        ${cards.map((card, index) => `
+          <div class="summary-card ${index === 0 ? "accent" : ""}">
+            <span class="summary-label">${card.label}</span>
+            <strong>${card.value}</strong>
+          </div>
+        `).join("")}
       </div>
 
       <div class="country-story">
