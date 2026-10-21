@@ -5,9 +5,22 @@
   font-family: 'Inter', sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background: linear-gradient(180deg, #f8f6fb 0%, #f4f4f8 100%);
   color: #18181b;
+}
+
+img {
+  max-width: 100%;
+}
+
+* {
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* ================= HEADER ================= */
@@ -2185,6 +2198,13 @@ footer h4 {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .panel-card strong,
+  .summary-card strong {
+    display: block;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 @media (max-width: 520px) {
@@ -2212,6 +2232,11 @@ footer h4 {
 
   .country-story {
     padding: 18px;
+  }
+
+  .panel-card strong,
+  .summary-card strong {
+    font-size: 0.96rem;
   }
 
   .country-story-copy h3 {
