@@ -183,27 +183,34 @@ header {
     padding: 12px 16px;
     gap: 10px;
     align-items: center;
-    flex-wrap: wrap;
+    position: relative;
   }
 
   .logo-section {
     min-width: 0;
-    flex: 1 1 180px;
-    max-width: calc(100% - 150px);
+    flex: 1 1 auto;
+    max-width: calc(100% - 120px);
   }
 
   .tagline {
     white-space: normal;
     overflow-wrap: break-word;
     line-height: 1.35;
-    max-width: 160px;
+    max-width: 150px;
     font-size: 10px;
   }
 
   .nav-cta {
+    display: inline-flex;
+    padding: 9px 12px;
+    font-size: 12px;
+    margin-left: 0;
     flex-shrink: 0;
-    padding: 10px 14px;
+  }
+
+  .hamburger {
     margin-left: auto;
+    align-self: center;
   }
 
   .logo {
