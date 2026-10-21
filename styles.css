@@ -197,6 +197,7 @@ header {
     line-height: 1.35;
     max-width: 150px;
     font-size: 10px;
+    margin-bottom: 0;
   }
 
   .nav-cta {
